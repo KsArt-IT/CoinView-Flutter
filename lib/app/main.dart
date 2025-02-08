@@ -1,4 +1,4 @@
-import 'package:coin_view/app/app.dart';
+import 'package:coin_view/app/coin_view_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {

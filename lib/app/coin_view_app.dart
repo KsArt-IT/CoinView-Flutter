@@ -1,4 +1,5 @@
-import 'package:coin_view/presentation/screens/home_screen.dart';
+import 'package:coin_view/presentation/theme/theme.dart';
+import 'package:coin_view/router/router.dart';
 import 'package:flutter/material.dart';
 
 class CoinViewApp extends StatelessWidget {
@@ -9,11 +10,9 @@ class CoinViewApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Coin View',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+      theme: lightTheme,
+      initialRoute: AppRoute.coins.route,
+      routes: AppRoute.routes,
     );
   }
 }

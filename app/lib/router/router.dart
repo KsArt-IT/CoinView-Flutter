@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coin_view/presentation/screens/screens.dart';
+import 'package:coin_view/ui/screens/screens.dart';
 
 enum AppRoute {
   coins("/coin_list"),

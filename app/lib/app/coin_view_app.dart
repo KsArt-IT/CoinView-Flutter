@@ -1,4 +1,4 @@
-import 'package:coin_view/presentation/theme/theme.dart';
+import 'package:coin_view/ui/theme/theme.dart';
 import 'package:coin_view/router/router.dart';
 import 'package:flutter/material.dart';
 

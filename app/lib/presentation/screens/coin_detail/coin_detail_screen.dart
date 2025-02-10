@@ -23,12 +23,12 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Детали #${_id}')),
+      appBar: AppBar(title: Text('Детали #$_id')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('ID: ${_id}', style: const TextStyle(fontSize: 24)),
+            Text('ID: $_id', style: const TextStyle(fontSize: 24)),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => AppRoute.goBack(context),

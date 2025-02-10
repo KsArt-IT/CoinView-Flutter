@@ -1,8 +1,9 @@
-
 import 'package:coin_view/router/router.dart';
 import 'package:flutter/material.dart';
 
 class CoinListScreen extends StatefulWidget {
+  const CoinListScreen({super.key});
+
   @override
   State<CoinListScreen> createState() => _CoinListScreenState();
 }

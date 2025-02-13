@@ -10,7 +10,9 @@ class CoinViewApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Coin View',
-      theme: lightTheme,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       initialRoute: AppRoute.coins.route,
       routes: AppRoute.routes,
     );

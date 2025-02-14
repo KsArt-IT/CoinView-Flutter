@@ -1,3 +1,5 @@
+import 'package:coin_view/domain/models/coin.dart';
+
 class CoinDTO {
   CoinDTO({
     required this.id,
@@ -16,4 +18,17 @@ class CoinDTO {
   final int rank;
   final String symbol;
   final String type;
+}
+
+extension Domain on CoinDTO {
+  Coin toDomain({String? logo = null}) {
+    return Coin(
+      id: id,
+      name: name,
+      isActive: isActive,
+      symbol: symbol,
+      rank: rank,
+      logoUrl: logo ?? "",
+    );
+  }
 }

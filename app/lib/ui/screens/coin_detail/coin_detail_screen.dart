@@ -10,13 +10,13 @@ class CoinDetailScreen extends StatefulWidget {
 }
 
 class _CoinDetailScreenState extends State<CoinDetailScreen> {
-  late int _id;
+  late String _id;
 
   @override
   void didChangeDependencies() {
     final args = ModalRoute.of(context)?.settings.arguments;
-    assert(args is int, "ID должен быть целым числом");
-    _id = args as int;
+    assert(args is String, "ID должен быть целым числом");
+    _id = args as String;
     super.didChangeDependencies();
   }
 

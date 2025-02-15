@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:coin_view/ui/screens/screens.dart';
+import 'package:provider/provider.dart';
 
 enum AppRoute {
   coins("/coin_list"),
@@ -9,7 +10,7 @@ enum AppRoute {
 
   const AppRoute(this.route);
 
-  static void navigateTo(BuildContext context, AppRoute route, {int? id}) {
+  static void navigateTo(BuildContext context, AppRoute route, {String? id}) {
     if (id != null) {
       Navigator.of(context).pushNamed(route.route, arguments: id);
     } else {
@@ -23,7 +24,7 @@ enum AppRoute {
 
   static Map<String, WidgetBuilder> get routes {
     return {
-      AppRoute.coins.route: (context) => CoinListScreen(),
+      AppRoute.coins.route: (context) => CoinsScreen(viewModel: context.read()),
       AppRoute.detail.route: (context) => CoinDetailScreen(),
     };
   }

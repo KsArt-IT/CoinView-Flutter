@@ -21,7 +21,7 @@ class CoinDTO {
 }
 
 extension Domain on CoinDTO {
-  Coin toDomain({String? logo = null}) {
+  Coin toDomain({String? logo}) {
     return Coin(
       id: id,
       name: name,

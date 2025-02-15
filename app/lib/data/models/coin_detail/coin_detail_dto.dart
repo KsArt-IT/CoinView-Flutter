@@ -55,7 +55,7 @@ final class CoinDetailDto {
   final CoinWhitepaperDto whitepaper;
 }
 
-extension on CoinDetailDto {
+extension Domain on CoinDetailDto {
   CoinDetail toDomain() {
     return CoinDetail(
       id: this.id,

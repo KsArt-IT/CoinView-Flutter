@@ -20,6 +20,11 @@ interface class DIProvider {
         update: (_, repository, previous) =>
             CoinsViewModel(repository: repository),
       ),
+      ChangeNotifierProxyProvider<CoinRepository, CoinDetailViewModel>(
+        create: (_) => CoinDetailViewModel(repository: null), // Временное создание
+        update: (_, repository, previous) =>
+            CoinDetailViewModel(repository: repository),
+      ),
     ];
   }
 }

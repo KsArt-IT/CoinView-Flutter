@@ -25,7 +25,7 @@ enum AppRoute {
   static Map<String, WidgetBuilder> get routes {
     return {
       AppRoute.coins.route: (context) => CoinsScreen(viewModel: context.read()),
-      AppRoute.detail.route: (context) => CoinDetailScreen(),
+      AppRoute.detail.route: (context) => CoinDetailScreen(viewModel: context.read()),
     };
   }
 }

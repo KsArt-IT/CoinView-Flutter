@@ -1,5 +1,5 @@
 import 'package:coin_view/core/utils/result.dart';
-import 'package:coin_view/data/api/coin_endpoint.dart';
+import 'package:coin_view/domain/models/coin_detail.dart';
 import 'package:coin_view/domain/repositories/coin_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +24,17 @@ final class CoinDetailViewModel extends ChangeNotifier {
     _repository.fetchCoinDetail(id).then((result) {
       switch (result) {
         case Success(value: final data):
-          _coinDetail = data as CoinDetail?;
+          _setCoin(data);
         case Failure(error: final error):
           _showMessage(error.toString());
       }
 
       notifyListeners();
     });
+  }
+
+  void _setCoin(CoinDetail coinDetail) {
+    _coinDetail = coinDetail;
   }
 
   void _showMessage(String message) {

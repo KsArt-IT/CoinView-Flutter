@@ -1,6 +1,6 @@
 # CoinView (Flutter)
 
-![UI](https://img.shields.io/badge/Flutter-3.27-gold?logo=Flutter) ![Language](https://img.shields.io/badge/Dart-3.6-blue?logo=Dart) ![Apple](https://img.shields.io/badge/iOS-12-FFFF66?logo=Apple) ![Android](https://img.shields.io/badge/Android-8.0-grean?logo=Android) ![License](https://img.shields.io/badge/License-MIT-EF443B?logo=Cachet)
+![UI](https://img.shields.io/badge/Flutter-3.27-gold?logo=Flutter) ![Language](https://img.shields.io/badge/Dart-3.6-blue?logo=Dart) ![Apple](https://img.shields.io/badge/iOS-12-FFFF66?logo=Apple) ![Android](https://img.shields.io/badge/Android-10.0-33A753?logo=Android) ![License](https://img.shields.io/badge/License-MIT-EF443B?logo=Cachet)
 
 CoinView application to view all coins
 

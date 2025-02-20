@@ -17,12 +17,13 @@ final class CoinRepositoryImpl implements CoinRepository {
     if (service == null) {
       return Result.failure(Exception("Service is null"));
     }
-    final result = await service!.getCoins();
+    final result = await service!.fetchCoins();
     switch (result) {
       case Success(value: final data):
+/*
         final coins = await Future.wait(
           data.map((CoinDTO coinDTO) async {
-            final coinDetail = await service!.getCoinDetail(coinDTO.id);
+            final coinDetail = await service!.fetchCoinDetail(coinDTO.id);
             final logo = switch (coinDetail) {
               Success(value: final data) => data.logo,
               Failure() => null,
@@ -30,6 +31,8 @@ final class CoinRepositoryImpl implements CoinRepository {
             return coinDTO.toDomain(logo: logo);
           }),
         );
+*/
+        final coins = data.map((coin) => coin.toDomain()).toList();
         return Result.success(coins);
       case Failure(:final error):
         return Result.failure(error);
@@ -38,7 +41,10 @@ final class CoinRepositoryImpl implements CoinRepository {
 
   @override
   Future<Result<CoinDetail>> fetchCoinDetail(String id) async {
-    final result = await service!.getCoinDetail(id);
+    if (service == null) {
+      return Result.failure(Exception("Service is null"));
+    }
+    final result = await service!.fetchCoinDetail(id);
     switch (result) {
       case Success(value: final data):
         return Result.success(data.toDomain());

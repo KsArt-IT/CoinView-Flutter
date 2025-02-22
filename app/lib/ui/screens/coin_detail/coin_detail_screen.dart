@@ -43,16 +43,20 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
 
             final coinDetail = widget.viewModel.coinDetail;
             if (coinDetail != null) {
+              _name = coinDetail.name;
+              
               return SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                 children: [
                   Image.network(
                     coinDetail.logoURL,
-                    errorBuilder: (context, _, __) {
-                      return Image.asset("assets/images/logo.png");
-                    },
                     width: 150,
                     height: 150,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, _, __) {
+                      return Image.asset("assets/images/coin_logo.png");
+                    },
                   ),
                   Text(coinDetail.name),
                   Text(coinDetail.symbol),

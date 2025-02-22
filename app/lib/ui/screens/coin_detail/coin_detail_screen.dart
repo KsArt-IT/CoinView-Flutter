@@ -1,4 +1,3 @@
-import 'package:coin_view/router/router.dart';
 import 'package:coin_view/ui/screens/coin_detail/coin_detail_viewmodel.dart';
 import 'package:coin_view/ui/widgets/snackbar_ext.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class CoinDetailScreen extends StatefulWidget {
 
 class _CoinDetailScreenState extends State<CoinDetailScreen> {
   late String _id;
+  String _name = '';
 
   @override
   void didChangeDependencies() {
@@ -21,6 +21,7 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
     _id = args as String;
     super.didChangeDependencies();
     if (_id.isNotEmpty) {
+      _name = '';
       widget.viewModel.fetchCoinDetail(_id);
     }
   }
@@ -28,13 +29,13 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Детали #$_id')),
+      appBar: AppBar(title: Text(_name)),
       body: SafeArea(
         child: ListenableBuilder(
           listenable: widget.viewModel,
           builder: (context, _) {
             if (widget.viewModel.message.isNotEmpty) {
-               Future.microtask(() {
+              Future.microtask(() {
                 context.showSnackbar(widget.viewModel.message);
                 widget.viewModel.clearMessage();
               });
@@ -42,7 +43,44 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
 
             final coinDetail = widget.viewModel.coinDetail;
             if (coinDetail != null) {
-              return Center(child: Text(coinDetail.name));
+              return SingleChildScrollView(
+                  child: Column(
+                children: [
+                  Image.network(
+                    coinDetail.logoURL,
+                    errorBuilder: (context, _, __) {
+                      return Image.asset("assets/images/logo.png");
+                    },
+                    width: 150,
+                    height: 150,
+                  ),
+                  Text(coinDetail.name),
+                  Text(coinDetail.symbol),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("First date: "),
+                      Text(coinDetail.firstDataAt),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Last date: "),
+                      Text(coinDetail.lastDataAt),
+                    ],
+                  ),
+                  Divider(),
+                  Text("Team"),
+                  Text(coinDetail.team),
+                  Divider(),
+                  Text("Tags"),
+                  Text(coinDetail.tags),
+                  Divider(),
+                  Text(coinDetail.message),
+                ],
+              ));
             }
             return const Center(child: CircularProgressIndicator());
           },

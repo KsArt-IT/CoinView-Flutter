@@ -20,7 +20,8 @@ final class CoinDetailViewModel extends ChangeNotifier {
       _showMessage("Repository is null");
       return;
     }
-
+    if (_coinDetail != null && _coinDetail!.id == id) return;
+    
     _repository.fetchCoinDetail(id).then((result) {
       switch (result) {
         case Success(value: final data):

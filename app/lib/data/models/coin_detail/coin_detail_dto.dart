@@ -55,6 +55,7 @@ final class CoinDetailDto {
   });
 
   factory CoinDetailDto.fromJson(Map<String, dynamic> json) {
+    debugPrint("json['tags']: ${json['tags']}");
     return CoinDetailDto(
       id: json['id'],
       name: json['name'],
@@ -77,10 +78,11 @@ final class CoinDetailDto {
       orgStructure: json['org_structure'],
       proofType: json['proof_type'],
       startedAt: json['started_at'],
-      tags: json['tags'].map((e) => CoinTagDto.fromJson(e)).toList(),
-      team: json['team'].map((e) => CoinTeamMemberDto.fromJson(e)).toList(),
-      whitepaper:
-          json['whitepaper'].map((e) => CoinWhitepaperDto.fromJson(e)).toList(),
+      tags: [],
+      team: [],
+      // tags: json['tags'].map((e) => CoinTagDto.fromJson(e)).toList(),
+      // team: json['team'].map((e) => CoinTeamMemberDto.fromJson(e)).toList(),
+      whitepaper: CoinWhitepaperDto.fromJson(json['whitepaper']),
     );
   }
 }

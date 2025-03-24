@@ -28,6 +28,7 @@ class CoinsScreen extends StatelessWidget {
                 final coin = viewModel.coins[index];
 
                 return ListTile(
+                  key: Key(coin.id),
                   leading: Image.network(
                           coin.logoUrl,
                           errorBuilder: (context, error, stackTrace) {

@@ -3,12 +3,15 @@ import 'package:coin_view/ui/screens/screens.dart';
 import 'package:provider/provider.dart';
 
 enum AppRoute {
-  coins("/coin_list"),
-  detail("/coin_detail");
+  coins(_coinsRoute),
+  detail(_detailRoute);
 
   final String route;
 
   const AppRoute(this.route);
+
+  static const _coinsRoute = '/coin_list';
+  static const _detailRoute = '/coin_detail';
 
   static void navigateTo(BuildContext context, AppRoute route, {String? id}) {
     if (id != null) {
@@ -22,10 +25,20 @@ enum AppRoute {
     Navigator.pop(context);
   }
 
-  static Map<String, WidgetBuilder> get routes {
-    return {
-      AppRoute.coins.route: (context) => CoinsScreen(viewModel: context.read()),
-      AppRoute.detail.route: (context) => CoinDetailScreen(viewModel: context.read()),
-    };
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case _coinsRoute:
+        return MaterialPageRoute(
+          builder: (context) => CoinsScreen(viewModel: context.read()),
+        );
+      case _detailRoute:
+        final id = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) =>
+              CoinDetailScreen(viewModel: context.read(), id: id),
+        );
+      default:
+        return null;
+    }
   }
 }

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class CoinViewApp extends StatelessWidget {
   const CoinViewApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +15,7 @@ class CoinViewApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
       initialRoute: AppRoute.coins.route,
-      routes: AppRoute.routes,
+      onGenerateRoute: AppRoute.onGenerateRoute,
     );
   }
 }

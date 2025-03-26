@@ -25,20 +25,17 @@ enum AppRoute {
     Navigator.pop(context);
   }
 
-  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case _coinsRoute:
-        return MaterialPageRoute(
-          builder: (context) => CoinsScreen(viewModel: context.read()),
-        );
-      case _detailRoute:
-        final id = settings.arguments as String;
-        return MaterialPageRoute(
-          builder: (context) =>
-              CoinDetailScreen(viewModel: context.read(), id: id),
-        );
-      default:
-        return null;
-    }
-  }
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) =>
+      switch (settings.name) {
+        _coinsRoute => MaterialPageRoute(
+            builder: (context) => CoinsScreen(viewModel: context.read()),
+          ),
+        _detailRoute => MaterialPageRoute(
+            builder: (context) => CoinDetailScreen(
+              viewModel: context.read(),
+              id: settings.arguments as String,
+            ),
+          ),
+        _ => null,
+      };
 }
